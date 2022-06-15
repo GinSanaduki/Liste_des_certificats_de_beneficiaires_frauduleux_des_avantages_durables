@@ -54,3 +54,6 @@ Alternatively install from sources using the [OpenBSD ports](http://man.openbsd.
 cd /usr/ports/lang/gawk && make install clean
 ```
 
+# Licenses
+This program is under the terms of the BSD 3-Clause License.  
+See https://opensource.org/licenses/BSD-3-Clause.  
