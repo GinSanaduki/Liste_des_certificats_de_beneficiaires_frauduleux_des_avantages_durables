@@ -1,5 +1,6 @@
 # Liste_des_certificats_de_beneficiaires_frauduleux_des_avantages_durables
-「持続化給付金の不正受給者の認定及び公表について」の情報収集・検索システム
+「持続化給付金の不正受給者の認定及び公表について」の情報収集・検索システム  
+検索画面はgolangのWailsで作成する予定・・・。  
 
 ・本家経済産業省サイト  
 https://www.meti.go.jp/covid-19/jizokuka_fusei_nintei.html  
