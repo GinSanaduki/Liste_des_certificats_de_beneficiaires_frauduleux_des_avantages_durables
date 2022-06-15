@@ -4,6 +4,11 @@
 ・本家経済産業省サイト  
 https://www.meti.go.jp/covid-19/jizokuka_fusei_nintei.html  
 
+# Download
+
+https://github.com/GinSanaduki/Liste_des_certificats_de_beneficiaires_frauduleux_des_avantages_durables/releases/download/V1.0.0.0/Liste_des_certificats_de_beneficiaires_frauduleux_des_avantages_durables.7z  
+
+
 # Running the system
 
 ```
