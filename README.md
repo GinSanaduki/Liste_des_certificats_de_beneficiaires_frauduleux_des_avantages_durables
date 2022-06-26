@@ -11,8 +11,15 @@ Système de collecte / recherche d'informations pour "certification et publicati
 L'écran de recherche sera créé avec Golang's Wails ...  
 C'est un format d'accumulation de données, et il se caractérise par ne pas disparaître même si les données sont mises à jour par le ministère de l'Économie, du Commerce et de l'Industrie.  
 
-・本家経済産業省サイト  
+・本家経済産業省サイト（持続化給付金の不正受給者の認定及び公表について）  
 https://www.meti.go.jp/covid-19/jizokuka_fusei_nintei.html  
+
+・本家経済産業省サイト（家賃支援給付金の不正受給者の認定及び公表について）  
+https://www.meti.go.jp/covid-19/yachin-kyufu/fusei_nintei.html    
+
+# Journal des modifications
+
+2022/06/27 「家賃支援給付金の不正受給者の認定及び公表について」のデータも収集するように収集機能を追加  
 
 # Download
 
