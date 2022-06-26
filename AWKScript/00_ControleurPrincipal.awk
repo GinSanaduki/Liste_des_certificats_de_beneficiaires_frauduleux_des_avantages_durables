@@ -38,14 +38,34 @@
 @include "AWKScript/47_ExecuteEditPipe.awk"
 @include "AWKScript/50_ExecuteRegist.awk"
 BEGIN{
+	# ---------------------------------------------------------
+	# 持続化給付金の不正受給者の認定及び公表について
+	# ---------------------------------------------------------
 	InitConst();
 	ExecWhich("curl");
 	ExecWhich("gawk");
 	ExecWhich("pdftotext");
 	ExecWhich("sqlite3");
+	#DownLoadMainPageName = Get_DownLoadMainPageName();
+	#print "DownLoadMainPageName : " DownLoadMainPageName > "/dev/stderr";
+	#ExecCurl(DownLoadMainPageName);
+	#ExistCheck_Component(DownLoadMainPageName);
+	#PDF_Liste_de_certification_des_beneficiaires_frauduleux_pour_les_travailleurs_independants_URL = GrepComponent_Liste_de_certification_des_beneficiaires_frauduleux_pour_les_travailleurs_independants(DownLoadMainPageName);
+	#print PDF_Liste_de_certification_des_beneficiaires_frauduleux_pour_les_travailleurs_independants_URL;
+	#ExecCurl_Liste_de_certification_des_beneficiaires_frauduleux_pour_les_travailleurs_independants(PDF_Liste_de_certification_des_beneficiaires_frauduleux_pour_les_travailleurs_independants_URL);
+	#PDF_Liste_de_certification_des_beneficiaires_frauduleux_pour_les_Entreprises_URL = GrepComponent_Liste_de_certification_des_beneficiaires_frauduleux_pour_les_Entreprises(DownLoadMainPageName);
+	#print PDF_Liste_de_certification_des_beneficiaires_frauduleux_pour_les_Entreprises_URL;
+	#ExecCurl_Liste_de_certification_des_beneficiaires_frauduleux_pour_les_Entreprises(PDF_Liste_de_certification_des_beneficiaires_frauduleux_pour_les_Entreprises_URL);
+	#ExecutePDFToText();
+	#ExecuteEditPipe();
+	#ExecuteRegist();
+	# ---------------------------------------------------------
+	# 家賃支援給付金の不正受給者の認定及び公表について
+	# ---------------------------------------------------------
+	InitConst_Deux();
 	DownLoadMainPageName = Get_DownLoadMainPageName();
 	print "DownLoadMainPageName : " DownLoadMainPageName > "/dev/stderr";
-	ExecCurl(DownLoadMainPageName);
+	ExecCurl_Deux(DownLoadMainPageName);
 	ExistCheck_Component(DownLoadMainPageName);
 	PDF_Liste_de_certification_des_beneficiaires_frauduleux_pour_les_travailleurs_independants_URL = GrepComponent_Liste_de_certification_des_beneficiaires_frauduleux_pour_les_travailleurs_independants(DownLoadMainPageName);
 	print PDF_Liste_de_certification_des_beneficiaires_frauduleux_pour_les_travailleurs_independants_URL;
@@ -54,7 +74,7 @@ BEGIN{
 	print PDF_Liste_de_certification_des_beneficiaires_frauduleux_pour_les_Entreprises_URL;
 	ExecCurl_Liste_de_certification_des_beneficiaires_frauduleux_pour_les_Entreprises(PDF_Liste_de_certification_des_beneficiaires_frauduleux_pour_les_Entreprises_URL);
 	ExecutePDFToText();
-	ExecuteEditPipe();
-	ExecuteRegist();
+	ExecuteEditPipe_PRESTATIONS_D_AIDE_AU_LOYER();
+	ExecuteRegist_PRESTATIONS_D_AIDE_AU_LOYER();
 }
 
