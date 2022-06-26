@@ -23,7 +23,7 @@ https://www.meti.go.jp/covid-19/yachin-kyufu/fusei_nintei.html
 
 # Download
 
-https://github.com/GinSanaduki/Liste_des_certificats_de_beneficiaires_frauduleux_des_avantages_durables/releases/download/V1.0.0.0/Liste_des_certificats_de_beneficiaires_frauduleux_des_avantages_durables.7z  
+https://github.com/GinSanaduki/Liste_des_certificats_de_beneficiaires_frauduleux_des_avantages_durables/releases/download/V1.0.0.1/JizokukaKyufukakin.7z  
 
 
 # Running the system
