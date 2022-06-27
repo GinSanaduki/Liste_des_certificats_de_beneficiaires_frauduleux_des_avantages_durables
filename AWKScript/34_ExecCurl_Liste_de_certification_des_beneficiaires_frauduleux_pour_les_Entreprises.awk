@@ -3,6 +3,7 @@
 # @include "AWKScript/34_ExecCurl_Liste_de_certification_des_beneficiaires_frauduleux_pour_les_Entreprises.awk"
 
 function ExecCurl_Liste_de_certification_des_beneficiaires_frauduleux_pour_les_Entreprises(Args_PDF_Liste_de_certification_des_beneficiaires_frauduleux_pour_les_Entreprises_URL_EC_LDCDBFPLE,
+	Args_ForceBit_EC_LDCDBFPLE,
 	Local_CurlCommand_EC_LDCDBFPLE,
 	Local_esc_EC_LDCDBFPLE,
 	Local_ArrayCnt_EC_LDCDBFPLE,
@@ -47,7 +48,7 @@ function ExecCurl_Liste_de_certification_des_beneficiaires_frauduleux_pour_les_E
 		Local_Etags_EC_LDCDBFPLE = RetETag();
 		INSERT_RENSEIGNEMENTS_SUR_LE_SITE_Liste_de_certification_des_beneficiaires_frauduleux_pour_les_Entreprises();
 		
-		if(SELECT_RENSEIGNEMENTS_SUR_LE_SITE_Liste_de_certification_des_beneficiaires_frauduleux_pour_les_Entreprises(Local_Etags_EC_LDCDBFPLE) < 1){
+		if(SELECT_RENSEIGNEMENTS_SUR_LE_SITE_Liste_de_certification_des_beneficiaires_frauduleux_pour_les_Entreprises(Local_Etags_EC_LDCDBFPLE) < 1 && Args_ForceBit_EC_LDCDBFPLE == 0){
 			ExecCurl_Details_Liste_de_certification_des_beneficiaires_frauduleux_pour_les_Entreprises(Args_PDF_Liste_de_certification_des_beneficiaires_frauduleux_pour_les_Entreprises_URL_EC_LDCDBFPLE);
 			# 取得後に更新
 			Local_HashCode_EC_LDCDBFPLE = RetHashCode(DownLoadPDFName_Liste_de_certification_des_beneficiaires_frauduleux_pour_les_Entreprises);
@@ -58,7 +59,7 @@ function ExecCurl_Liste_de_certification_des_beneficiaires_frauduleux_pour_les_E
 		
 		Local_HashCode_EC_LDCDBFPLE = RetHashCode(DownLoadPDFName_Liste_de_certification_des_beneficiaires_frauduleux_pour_les_Entreprises);
 		
-		if(SELECT_RENSEIGNEMENTS_SUR_LE_SITE_Liste_de_certification_des_beneficiaires_frauduleux_pour_les_Entreprises_CODES_DE_HACHAGE(Local_HashCode_EC_LDCDBFPLE) < 1){
+		if(SELECT_RENSEIGNEMENTS_SUR_LE_SITE_Liste_de_certification_des_beneficiaires_frauduleux_pour_les_Entreprises_CODES_DE_HACHAGE(Local_HashCode_EC_LDCDBFPLE) < 1 && Args_ForceBit_EC_LDCDBFPLE == 0){
 			ExecCurl_Details_Liste_de_certification_des_beneficiaires_frauduleux_pour_les_Entreprises(Args_PDF_Liste_de_certification_des_beneficiaires_frauduleux_pour_les_Entreprises_URL_EC_LDCDBFPLE);
 			UPDATE_RENSEIGNEMENTS_SUR_LE_SITE_Liste_de_certification_des_beneficiaires_frauduleux_pour_les_Entreprises(Local_Etags_EC_LDCDBFPLE, Local_HashCode_EC_LDCDBFPLE);
 			return;
@@ -69,6 +70,7 @@ function ExecCurl_Liste_de_certification_des_beneficiaires_frauduleux_pour_les_E
 # -------------------------------------------------------------------------------------------------------------------------
 
 function ExecCurl_Liste_de_certification_des_beneficiaires_frauduleux_pour_les_Entreprises_PRESTATIONS_D_AIDE_AU_LOYER(Args_PDF_Liste_de_certification_des_beneficiaires_frauduleux_pour_les_Entreprises_URL_EC_LDCDBFPLE,
+	Args_ForceBit_EC_LDCDBFPLE,
 	Local_CurlCommand_EC_LDCDBFPLE,
 	Local_esc_EC_LDCDBFPLE,
 	Local_ArrayCnt_EC_LDCDBFPLE,
@@ -111,9 +113,9 @@ function ExecCurl_Liste_de_certification_des_beneficiaires_frauduleux_pour_les_E
 			CheckExitStatus_LoopCnt--;
 		}
 		Local_Etags_EC_LDCDBFPLE = RetETag();
-		INSERT_RENSEIGNEMENTS_SUR_LE_SITE_Liste_de_certification_des_beneficiaires_frauduleux_pour_les_Entreprises_PRESTATIONS_D_AIDE_AU_LOYER();
+		INSERT_RENSEIGNEMENTS_SUR_LE_SITE_Liste_de_certification_des_beneficiaires_frauduleux_pour_les_Entreprises();
 		
-		if(SELECT_RENSEIGNEMENTS_SUR_LE_SITE_Liste_de_certification_des_beneficiaires_frauduleux_pour_les_Entreprises_PRESTATIONS_D_AIDE_AU_LOYER(Local_Etags_EC_LDCDBFPLE) < 1){
+		if(SELECT_RENSEIGNEMENTS_SUR_LE_SITE_Liste_de_certification_des_beneficiaires_frauduleux_pour_les_Entreprises_PRESTATIONS_D_AIDE_AU_LOYER(Local_Etags_EC_LDCDBFPLE) < 1 && Args_ForceBit_EC_LDCDBFPLE == 0){
 			ExecCurl_Details_Liste_de_certification_des_beneficiaires_frauduleux_pour_les_Entreprises(Args_PDF_Liste_de_certification_des_beneficiaires_frauduleux_pour_les_Entreprises_URL_EC_LDCDBFPLE);
 			# 取得後に更新
 			Local_HashCode_EC_LDCDBFPLE = RetHashCode(DownLoadPDFName_Liste_de_certification_des_beneficiaires_frauduleux_pour_les_Entreprises);
@@ -124,7 +126,7 @@ function ExecCurl_Liste_de_certification_des_beneficiaires_frauduleux_pour_les_E
 		
 		Local_HashCode_EC_LDCDBFPLE = RetHashCode(DownLoadPDFName_Liste_de_certification_des_beneficiaires_frauduleux_pour_les_Entreprises);
 		
-		if(SELECT_RENSEIGNEMENTS_SUR_LE_SITE_Liste_de_certification_des_beneficiaires_frauduleux_pour_les_Entreprises_CODES_DE_HACHAGE_PRESTATIONS_D_AIDE_AU_LOYER(Local_HashCode_EC_LDCDBFPLE) < 1){
+		if(SELECT_RENSEIGNEMENTS_SUR_LE_SITE_Liste_de_certification_des_beneficiaires_frauduleux_pour_les_Entreprises_CODES_DE_HACHAGE_PRESTATIONS_D_AIDE_AU_LOYER(Local_HashCode_EC_LDCDBFPLE) < 1 && Args_ForceBit_EC_LDCDBFPLE == 0){
 			ExecCurl_Details_Liste_de_certification_des_beneficiaires_frauduleux_pour_les_Entreprises(Args_PDF_Liste_de_certification_des_beneficiaires_frauduleux_pour_les_Entreprises_URL_EC_LDCDBFPLE);
 			UPDATE_RENSEIGNEMENTS_SUR_LE_SITE_Liste_de_certification_des_beneficiaires_frauduleux_pour_les_Entreprises_PRESTATIONS_D_AIDE_AU_LOYER(Local_Etags_EC_LDCDBFPLE, Local_HashCode_EC_LDCDBFPLE);
 			return;

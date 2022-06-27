@@ -46,19 +46,17 @@ BEGIN{
 	ExecWhich("gawk");
 	ExecWhich("pdftotext");
 	ExecWhich("sqlite3");
-	#DownLoadMainPageName = Get_DownLoadMainPageName();
-	#print "DownLoadMainPageName : " DownLoadMainPageName > "/dev/stderr";
-	#ExecCurl(DownLoadMainPageName);
-	#ExistCheck_Component(DownLoadMainPageName);
-	#PDF_Liste_de_certification_des_beneficiaires_frauduleux_pour_les_travailleurs_independants_URL = GrepComponent_Liste_de_certification_des_beneficiaires_frauduleux_pour_les_travailleurs_independants(DownLoadMainPageName);
-	#print PDF_Liste_de_certification_des_beneficiaires_frauduleux_pour_les_travailleurs_independants_URL;
-	#ExecCurl_Liste_de_certification_des_beneficiaires_frauduleux_pour_les_travailleurs_independants(PDF_Liste_de_certification_des_beneficiaires_frauduleux_pour_les_travailleurs_independants_URL);
-	#PDF_Liste_de_certification_des_beneficiaires_frauduleux_pour_les_Entreprises_URL = GrepComponent_Liste_de_certification_des_beneficiaires_frauduleux_pour_les_Entreprises(DownLoadMainPageName);
-	#print PDF_Liste_de_certification_des_beneficiaires_frauduleux_pour_les_Entreprises_URL;
-	#ExecCurl_Liste_de_certification_des_beneficiaires_frauduleux_pour_les_Entreprises(PDF_Liste_de_certification_des_beneficiaires_frauduleux_pour_les_Entreprises_URL);
-	#ExecutePDFToText();
-	#ExecuteEditPipe();
-	#ExecuteRegist();
+	DownLoadMainPageName = Get_DownLoadMainPageName();
+	print "DownLoadMainPageName : " DownLoadMainPageName > "/dev/stderr";
+	ExecCurl(DownLoadMainPageName);
+	ExistCheck_Component(DownLoadMainPageName);
+	PDF_Liste_de_certification_des_beneficiaires_frauduleux_pour_les_travailleurs_independants_URL = GrepComponent_Liste_de_certification_des_beneficiaires_frauduleux_pour_les_travailleurs_independants(DownLoadMainPageName);
+	print PDF_Liste_de_certification_des_beneficiaires_frauduleux_pour_les_travailleurs_independants_URL;
+	PDF_Liste_de_certification_des_beneficiaires_frauduleux_pour_les_Entreprises_URL = GrepComponent_Liste_de_certification_des_beneficiaires_frauduleux_pour_les_Entreprises(DownLoadMainPageName);
+	print PDF_Liste_de_certification_des_beneficiaires_frauduleux_pour_les_Entreprises_URL;
+	LoopInExecCurl_PDFToText(0);
+	ExecuteEditPipe();
+	ExecuteRegist();
 	# ---------------------------------------------------------
 	# ‰Æ’ÀŽx‰‡‹‹•t‹à‚Ì•s³Žó‹‹ŽÒ‚Ì”F’è‹y‚ÑŒö•\‚É‚Â‚¢‚Ä
 	# ---------------------------------------------------------
@@ -69,12 +67,45 @@ BEGIN{
 	ExistCheck_Component(DownLoadMainPageName);
 	PDF_Liste_de_certification_des_beneficiaires_frauduleux_pour_les_travailleurs_independants_URL = GrepComponent_Liste_de_certification_des_beneficiaires_frauduleux_pour_les_travailleurs_independants(DownLoadMainPageName);
 	print PDF_Liste_de_certification_des_beneficiaires_frauduleux_pour_les_travailleurs_independants_URL;
-	ExecCurl_Liste_de_certification_des_beneficiaires_frauduleux_pour_les_travailleurs_independants(PDF_Liste_de_certification_des_beneficiaires_frauduleux_pour_les_travailleurs_independants_URL);
 	PDF_Liste_de_certification_des_beneficiaires_frauduleux_pour_les_Entreprises_URL = GrepComponent_Liste_de_certification_des_beneficiaires_frauduleux_pour_les_Entreprises(DownLoadMainPageName);
 	print PDF_Liste_de_certification_des_beneficiaires_frauduleux_pour_les_Entreprises_URL;
-	ExecCurl_Liste_de_certification_des_beneficiaires_frauduleux_pour_les_Entreprises(PDF_Liste_de_certification_des_beneficiaires_frauduleux_pour_les_Entreprises_URL);
-	ExecutePDFToText();
+	LoopInExecCurl_PDFToText(1);
 	ExecuteEditPipe_PRESTATIONS_D_AIDE_AU_LOYER();
 	ExecuteRegist_PRESTATIONS_D_AIDE_AU_LOYER();
+}
+
+# -----------------------------------------------------------------------------------------------------------------
+
+function LoopInExecCurl_PDFToText(Args_Mode_LIEC_PDFTT, Local_ControlCnt_LIEC_PDFTT, Local_RetCode_ExecutePDFToText_LIEC_PDFTT, Local_ForceBit_LIEC_PDFTT){
+	Args_Mode_LIEC_PDFTT = Args_Mode_LIEC_PDFTT + 0;
+	Local_ControlCnt_LIEC_PDFTT = 0;
+	Local_ForceBit_LIEC_PDFTT = 0;
+	
+	while(4){
+		if(Local_ControlCnt_LIEC_PDFTT > 3){
+			print "ERROR : It will be terminated because the retry failed 3 times." > "/dev/stderr";
+			exit 99;
+		}
+		
+		if(Local_ControlCnt_LIEC_PDFTT > 0){
+			Local_ForceBit_LIEC_PDFTT = 1;
+		}
+		
+		if(Args_Mode_LIEC_PDFTT == 0){
+			ExecCurl_Liste_de_certification_des_beneficiaires_frauduleux_pour_les_travailleurs_independants(PDF_Liste_de_certification_des_beneficiaires_frauduleux_pour_les_travailleurs_independants_URL, Local_ForceBit_LIEC_PDFTT);
+			ExecCurl_Liste_de_certification_des_beneficiaires_frauduleux_pour_les_Entreprises(PDF_Liste_de_certification_des_beneficiaires_frauduleux_pour_les_Entreprises_URL, Local_ForceBit_LIEC_PDFTT);
+		} else {
+			ExecCurl_Liste_de_certification_des_beneficiaires_frauduleux_pour_les_travailleurs_independants_PRESTATIONS_D_AIDE_AU_LOYER(PDF_Liste_de_certification_des_beneficiaires_frauduleux_pour_les_travailleurs_independants_URL, Local_ForceBit_LIEC_PDFTT);
+			ExecCurl_Liste_de_certification_des_beneficiaires_frauduleux_pour_les_Entreprises_PRESTATIONS_D_AIDE_AU_LOYER(PDF_Liste_de_certification_des_beneficiaires_frauduleux_pour_les_Entreprises_URL, Local_ForceBit_LIEC_PDFTT);
+		}
+		
+		Local_RetCode_ExecutePDFToText_LIEC_PDFTT = ExecutePDFToText();
+		if(Local_RetCode_ExecutePDFToText_LIEC_PDFTT == 0){
+			break;
+		}
+		print "WARNING : ExecutePDFToText processing failed, so processing is retried." > "/dev/stderr";
+		Local_ControlCnt_LIEC_PDFTT++;
+		print "Number of retries: " Local_ControlCnt_LIEC_PDFTT;
+	}
 }
 

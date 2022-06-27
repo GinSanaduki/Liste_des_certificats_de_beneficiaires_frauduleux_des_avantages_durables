@@ -8,7 +8,7 @@ function ExecutePDFToText(Local_RetCode_EPDFTT){
 	
 	if(Local_RetCode_EPDFTT != 0){
 		print "PDFToText is terminate abnormally. Local_RetCode_EPDFTT : "Local_RetCode_EPDFTT", PDFToTextCmd_Liste_de_certification_des_beneficiaires_frauduleux_pour_les_travailleurs_independants : "PDFToTextCmd_Liste_de_certification_des_beneficiaires_frauduleux_pour_les_travailleurs_independants > "/dev/stderr";
-		exit 99;
+		return 99;
 	}
 	
 	Local_RetCode_EPDFTT = system(PDFToTextCmd_Liste_de_certification_des_beneficiaires_frauduleux_pour_les_Entreprises);
@@ -16,7 +16,9 @@ function ExecutePDFToText(Local_RetCode_EPDFTT){
 	
 	if(Local_RetCode_EPDFTT != 0){
 		print "PDFToText is terminate abnormally. Local_RetCode_EPDFTT : "Local_RetCode_EPDFTT", PDFToTextCmd_Liste_de_certification_des_beneficiaires_frauduleux_pour_les_Entreprises : "PDFToTextCmd_Liste_de_certification_des_beneficiaires_frauduleux_pour_les_Entreprises > "/dev/stderr";
-		exit 99;
+		return 99;
 	}
+	
+	return 0;
 }
 

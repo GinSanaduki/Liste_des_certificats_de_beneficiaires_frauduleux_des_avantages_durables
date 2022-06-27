@@ -3,6 +3,7 @@
 # @include "AWKScript/24_ExecCurl_Liste_de_certification_des_beneficiaires_frauduleux_pour_les_travailleurs_independants.awk"
 
 function ExecCurl_Liste_de_certification_des_beneficiaires_frauduleux_pour_les_travailleurs_independants(Args_PDF_Liste_de_certification_des_beneficiaires_frauduleux_pour_les_travailleurs_independants_URL_ECLDCDBFPLTI,
+	Args_ForceBit_ECLDCDBFPLTI,
 	Local_CurlCommand_ECLDCDBFPLTI,
 	Local_esc_ECLDCDBFPLTI,
 	Local_ArrayCnt_ECLDCDBFPLTI,
@@ -47,7 +48,8 @@ function ExecCurl_Liste_de_certification_des_beneficiaires_frauduleux_pour_les_t
 		
 		Local_Etags_ECLDCDBFPLTI = RetETag();
 		INSERT_RENSEIGNEMENTS_SUR_LE_SITE_Liste_de_certification_des_beneficiaires_frauduleux_pour_les_travailleurs_independants();
-		if(SELECT_RENSEIGNEMENTS_SUR_LE_SITE_Liste_de_certification_des_beneficiaires_frauduleux_pour_les_travailleurs_independants(Local_Etags_ECLDCDBFPLTI) < 1){
+		
+		if(SELECT_RENSEIGNEMENTS_SUR_LE_SITE_Liste_de_certification_des_beneficiaires_frauduleux_pour_les_travailleurs_independants(Local_Etags_ECLDCDBFPLTI) < 1 && Args_ForceBit_ECLDCDBFPLTI == 0){
 			ExecCurl_Details_Liste_de_certification_des_beneficiaires_frauduleux_pour_les_travailleurs_independants(Args_PDF_Liste_de_certification_des_beneficiaires_frauduleux_pour_les_travailleurs_independants_URL_ECLDCDBFPLTI);
 			# 取得後に更新
 			Local_HashCode_ECLDCDBFPLTI = RetHashCode(DownLoadPDFName_Liste_de_certification_des_beneficiaires_frauduleux_pour_les_travailleurs_independants);
@@ -58,7 +60,7 @@ function ExecCurl_Liste_de_certification_des_beneficiaires_frauduleux_pour_les_t
 		
 		Local_HashCode_ECLDCDBFPLTI = RetHashCode(DownLoadPDFName_Liste_de_certification_des_beneficiaires_frauduleux_pour_les_travailleurs_independants);
 		
-		if(SELECT_RENSEIGNEMENTS_SUR_LE_SITE_Liste_de_certification_des_beneficiaires_frauduleux_pour_les_travailleurs_independants_CODES_DE_HACHAGE(Local_HashCode_ECLDCDBFPLTI) < 1){
+		if(SELECT_RENSEIGNEMENTS_SUR_LE_SITE_Liste_de_certification_des_beneficiaires_frauduleux_pour_les_travailleurs_independants_CODES_DE_HACHAGE(Local_HashCode_ECLDCDBFPLTI) < 1 && Args_ForceBit_ECLDCDBFPLTI == 0){
 			ExecCurl_Details_Liste_de_certification_des_beneficiaires_frauduleux_pour_les_travailleurs_independants(Args_PDF_Liste_de_certification_des_beneficiaires_frauduleux_pour_les_travailleurs_independants_URL_ECLDCDBFPLTI);
 			UPDATE_RENSEIGNEMENTS_SUR_LE_SITE_Liste_de_certification_des_beneficiaires_frauduleux_pour_les_travailleurs_independants(Local_Etags_ECLDCDBFPLTI, Local_HashCode_ECLDCDBFPLTI);
 			return;
@@ -69,6 +71,7 @@ function ExecCurl_Liste_de_certification_des_beneficiaires_frauduleux_pour_les_t
 # --------------------------------------------------------------------------------------------------------------------------
 
 function ExecCurl_Liste_de_certification_des_beneficiaires_frauduleux_pour_les_travailleurs_independants_PRESTATIONS_D_AIDE_AU_LOYER(Args_PDF_Liste_de_certification_des_beneficiaires_frauduleux_pour_les_travailleurs_independants_URL_ECLDCDBFPLTI,
+	Args_ForceBit_ECLDCDBFPLTI,
 	Local_CurlCommand_ECLDCDBFPLTI,
 	Local_esc_ECLDCDBFPLTI,
 	Local_ArrayCnt_ECLDCDBFPLTI,
@@ -112,8 +115,8 @@ function ExecCurl_Liste_de_certification_des_beneficiaires_frauduleux_pour_les_t
 		}
 		
 		Local_Etags_ECLDCDBFPLTI = RetETag();
-		INSERT_RENSEIGNEMENTS_SUR_LE_SITE_Liste_de_certification_des_beneficiaires_frauduleux_pour_les_travailleurs_independants_PRESTATIONS_D_AIDE_AU_LOYER();
-		if(SELECT_RENSEIGNEMENTS_SUR_LE_SITE_Liste_de_certification_des_beneficiaires_frauduleux_pour_les_travailleurs_independants_PRESTATIONS_D_AIDE_AU_LOYER(Local_Etags_ECLDCDBFPLTI) < 1){
+		INSERT_RENSEIGNEMENTS_SUR_LE_SITE_Liste_de_certification_des_beneficiaires_frauduleux_pour_les_travailleurs_independants();
+		if(SELECT_RENSEIGNEMENTS_SUR_LE_SITE_Liste_de_certification_des_beneficiaires_frauduleux_pour_les_travailleurs_independants_PRESTATIONS_D_AIDE_AU_LOYER(Local_Etags_ECLDCDBFPLTI) < 1 && Args_ForceBit_ECLDCDBFPLTI == 0){
 			ExecCurl_Details_Liste_de_certification_des_beneficiaires_frauduleux_pour_les_travailleurs_independants(Args_PDF_Liste_de_certification_des_beneficiaires_frauduleux_pour_les_travailleurs_independants_URL_ECLDCDBFPLTI);
 			# 取得後に更新
 			Local_HashCode_ECLDCDBFPLTI = RetHashCode(DownLoadPDFName_Liste_de_certification_des_beneficiaires_frauduleux_pour_les_travailleurs_independants);
@@ -124,7 +127,7 @@ function ExecCurl_Liste_de_certification_des_beneficiaires_frauduleux_pour_les_t
 		
 		Local_HashCode_ECLDCDBFPLTI = RetHashCode(DownLoadPDFName_Liste_de_certification_des_beneficiaires_frauduleux_pour_les_travailleurs_independants);
 		
-		if(SELECT_RENSEIGNEMENTS_SUR_LE_SITE_Liste_de_certification_des_beneficiaires_frauduleux_pour_les_travailleurs_independants_CODES_DE_HACHAGE_PRESTATIONS_D_AIDE_AU_LOYER(Local_HashCode_ECLDCDBFPLTI) < 1){
+		if(SELECT_RENSEIGNEMENTS_SUR_LE_SITE_Liste_de_certification_des_beneficiaires_frauduleux_pour_les_travailleurs_independants_CODES_DE_HACHAGE_PRESTATIONS_D_AIDE_AU_LOYER(Local_HashCode_ECLDCDBFPLTI) < 1 && Args_ForceBit_ECLDCDBFPLTI == 0){
 			ExecCurl_Details_Liste_de_certification_des_beneficiaires_frauduleux_pour_les_travailleurs_independants(Args_PDF_Liste_de_certification_des_beneficiaires_frauduleux_pour_les_travailleurs_independants_URL_ECLDCDBFPLTI);
 			UPDATE_RENSEIGNEMENTS_SUR_LE_SITE_Liste_de_certification_des_beneficiaires_frauduleux_pour_les_travailleurs_independants_PRESTATIONS_D_AIDE_AU_LOYER(Local_Etags_ECLDCDBFPLTI, Local_HashCode_ECLDCDBFPLTI);
 			return;
