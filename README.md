@@ -18,13 +18,13 @@ https://www.meti.go.jp/covid-19/jizokuka_fusei_nintei.html
 https://www.meti.go.jp/covid-19/yachin-kyufu/fusei_nintei.html    
 
 # Journal des modifications
-
+2022/07/03 「家賃支援給付金の不正受給者の認定及び公表について」の個人のデータの並びが壊れたため対応    
 2022/07/02 「家賃支援給付金の不正受給者の認定及び公表について」の法人収集時にcurlの場合ファイルが破損する場合があるため、再試行時のコマンドをwgetに変更  
 2022/06/27 「家賃支援給付金の不正受給者の認定及び公表について」のデータも収集するように収集機能を追加  
 
 # Download
 
-https://github.com/GinSanaduki/Liste_des_certificats_de_beneficiaires_frauduleux_des_avantages_durables/releases/download/V1.0.0.1/JizokukaKyufukakin.7z  
+https://github.com/GinSanaduki/Liste_des_certificats_de_beneficiaires_frauduleux_des_avantages_durables/releases/download/V1.0.0.2/JizokukaKyufukakin.7z  
 
 
 # Running the system
