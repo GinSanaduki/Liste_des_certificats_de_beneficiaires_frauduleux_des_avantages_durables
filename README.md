@@ -19,6 +19,7 @@ https://www.meti.go.jp/covid-19/yachin-kyufu/fusei_nintei.html
 
 # Journal des modifications
 
+2022/07/02 「家賃支援給付金の不正受給者の認定及び公表について」の法人収集時にcurlの場合ファイルが破損する場合があるため、再試行時のコマンドをwgetに変更  
 2022/06/27 「家賃支援給付金の不正受給者の認定及び公表について」のデータも収集するように収集機能を追加  
 
 # Download
