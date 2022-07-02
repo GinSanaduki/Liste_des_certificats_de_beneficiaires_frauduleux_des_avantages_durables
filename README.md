@@ -33,6 +33,12 @@ https://github.com/GinSanaduki/Liste_des_certificats_de_beneficiaires_frauduleux
 sh ShellScript/00_Execute.sh
 ```
 
+# Reset the system
+
+```
+sh ShellScript/09_Reset.sh
+```
+
 # You need command
 - gawk
 - curl
