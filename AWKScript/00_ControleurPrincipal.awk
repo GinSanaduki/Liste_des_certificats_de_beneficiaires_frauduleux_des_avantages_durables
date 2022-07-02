@@ -43,6 +43,7 @@ BEGIN{
 	# ---------------------------------------------------------
 	InitConst();
 	ExecWhich("curl");
+	ExecWhich("wget");
 	ExecWhich("gawk");
 	ExecWhich("pdftotext");
 	ExecWhich("sqlite3");
