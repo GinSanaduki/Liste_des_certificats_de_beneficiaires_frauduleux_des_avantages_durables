@@ -73,6 +73,8 @@ BEGIN{
 	LoopInExecCurl_PDFToText(1);
 	ExecuteEditPipe_PRESTATIONS_D_AIDE_AU_LOYER();
 	ExecuteRegist_PRESTATIONS_D_AIDE_AU_LOYER();
+	print "AWKScript/00_ControleurPrincipal.awk terminated normally." > "/dev/stderr";
+	exit 0;
 }
 
 # -----------------------------------------------------------------------------------------------------------------
