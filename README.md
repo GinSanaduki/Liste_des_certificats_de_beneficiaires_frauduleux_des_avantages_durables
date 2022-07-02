@@ -35,6 +35,7 @@ sh ShellScript/00_Execute.sh
 # You need command
 - gawk
 - curl
+- wget
 - pdftotext
 - sqlite3
 
