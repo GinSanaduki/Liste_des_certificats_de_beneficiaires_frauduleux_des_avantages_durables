@@ -121,7 +121,7 @@ END{
 						arrays[y + 3 + 0.1][1] = Amount" "Text;
 						y = y + 0;
 						for(x = 0; x <= 3; x++){
-							print "L124 : y + x : " y + x > "/dev/stderr";
+							# print "L124 : y + x : " y + x > "/dev/stderr";
 							arrays[y + x][5] = 0;
 						}
 					}

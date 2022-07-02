@@ -34,6 +34,10 @@ BEGIN{
 		Cols4 = arrays[4];
 	}
 	delete arrays;
+	mat = match($1, /,/);
+	if(mat > 0){
+		next;
+	}
 	print $1"\t"$2"\t"Converted_YYYYMMDD"\t"Cols3"\t"Cols4"\t"Amount"\t"Issue;
 }
 

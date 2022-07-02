@@ -19,6 +19,10 @@ BEGIN{
 		next;
 	}
 	if(textcnt < cnt){
+		mat = match($0, /,/);
+		if(mat > 0){
+			print;
+		}
 		next;
 	}
 	print;

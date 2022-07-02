@@ -3,7 +3,8 @@
 # @include "AWKScript/15_ExecCurl_Details.awk"
 
 function ExecCurl_Details(Args_DownLoadMainPageName_ECD, Local_CurlCommand_ECD, Local_RetCode_ECD){
-	Local_CurlCommand_ECD = "curl --retry 3 -s -H \047"Setter_UserAgent()"\047 "MainURL " > StoredHTML/"Args_DownLoadMainPageName_ECD;
+	Local_CurlCommand_ECD = "wget --no-use-server-timestamps --user-agent=\047"Setter_UserAgent()"\047 -O \047StoredHTML/"Args_DownLoadMainPageName_ECD"\047 \047"MainURL"\047";
+	# Local_CurlCommand_ECD = "curl --retry 3 -s -H \047"Setter_UserAgent()"\047 "MainURL " > StoredHTML/"Args_DownLoadMainPageName_ECD;
 	print Local_CurlCommand_ECD > "/dev/stderr";
 	Mkdir(MkdirCmd_StoredHTML);
 	LongSleep();

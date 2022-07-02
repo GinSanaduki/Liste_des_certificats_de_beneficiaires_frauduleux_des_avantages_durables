@@ -12,10 +12,14 @@ gawk -f AWKScript/42_Exclure_les_lignes_vides.awk | \
 fgrep -v -e '最終更新日: ' -e '※' | \
 sed -e '$d' | \
 gawk -f AWKScript/43_Supprimer_le_numero_de_page_dans_le_pied_de_page.awk | \
-gawk -f AWKScript/51_Correction_de_la_position_des_messages_PRESTATIONS_D_AIDE_AU_LOYER.awk | \
+gawk -f AWKScript/58_Correction_de_la_position_des_messages_PRESTATIONS_D_AIDE_AU_LOYER_Trois.awk | \
 sort -k 1n,1 -t ',' | \
 awk '{mat = match($0, /,/); print substr($0, mat + 1);}' | \
-gawk -f AWKScript/52_Correction_de_la_position_des_messages_PRESTATIONS_D_AIDE_AU_LOYER_Deux.awk | \
+gawk -f AWKScript/59_Correction_de_la_position_des_messages_PRESTATIONS_D_AIDE_AU_LOYER_Quatre.awk | \
+sort -k 1n,1 -t ',' | \
+awk '{mat = match($0, /,/); print substr($0, mat + 1);}' | \
+awk '/./{print;}' | \
+gawk -f AWKScript/60_Correction_de_la_position_des_messages_PRESTATIONS_D_AIDE_AU_LOYER_Cinq.awk | \
 sort -k 1n,1 -t ',' | \
 awk '{mat = match($0, /,/); print substr($0, mat + 1);}' | \
 awk '/./{print;}' | \
