@@ -1,0 +1,23 @@
+#!/usr/bin/gawk -f
+# 27_INSERT_RENSEIGNEMENTS_SUR_LE_SITE_Liste_de_certification_des_beneficiaires_frauduleux_pour_les_travailleurs_independants.awk
+# @include "AWKScript/27_INSERT_RENSEIGNEMENTS_SUR_LE_SITE_Liste_de_certification_des_beneficiaires_frauduleux_pour_les_travailleurs_independants.awk"
+
+function INSERT_RENSEIGNEMENTS_SUR_LE_SITE_Liste_de_certification_des_beneficiaires_frauduleux_pour_les_travailleurs_independants(Local_GawkCommand_OutputFileName_IRSLSPDA, Local_GawkCommand_IRSLSPDA, Local_SQLite3Cmd_RENSEIGNEMENTS_SUR_LE_SITE, Local_RetCode_SQLite3Cmd_RENSEIGNEMENTS_SUR_LE_SITE){
+	Local_GawkCommand_OutputFileName_IRSLSPDA = "TempSQLScripts/05_INSERT_RENSEIGNEMENTS_SUR_LE_SITE_Liste_de_certification_des_beneficiaires_frauduleux_pour_les_travailleurs_independants_"STRFTIME_YYYYMMDD_HHMMSS".sql";
+	Local_GawkCommand_IRSLSPDA = GawkCommand_05_Gsub_INSERT_RENSEIGNEMENTS_SUR_LE_SITE_Liste_de_certification_des_beneficiaires_frauduleux_pour_les_travailleurs_independants Local_GawkCommand_OutputFileName_IRSLSPDA;
+	print Local_GawkCommand_IRSLSPDA;
+	Mkdir(MkdirCmd_TempSQLScripts);
+	ExecuteGawk(Local_GawkCommand_IRSLSPDA);
+	Mkdir(MkdirCmd_SQLITE3);
+	Local_SQLite3Cmd_RENSEIGNEMENTS_SUR_LE_SITE = SQLite3Cmd_RENSEIGNEMENTS_SUR_LE_SITE Local_GawkCommand_OutputFileName_IRSLSPDA;
+	print Local_SQLite3Cmd_RENSEIGNEMENTS_SUR_LE_SITE > "/dev/stderr";
+	Local_RetCode_SQLite3Cmd_RENSEIGNEMENTS_SUR_LE_SITE = system(Local_SQLite3Cmd_RENSEIGNEMENTS_SUR_LE_SITE);
+	close(Local_SQLite3Cmd_RENSEIGNEMENTS_SUR_LE_SITE);
+	
+	# https://runebook.dev/ja/docs/sqlite/rescode
+	if(Local_RetCode_SQLite3Cmd_RENSEIGNEMENTS_SUR_LE_SITE != 0){
+		print "ERROR : "Local_GawkCommand_OutputFileName_IRSLSPDA > "/dev/stderr";
+		exit 99;
+	}
+}
+
