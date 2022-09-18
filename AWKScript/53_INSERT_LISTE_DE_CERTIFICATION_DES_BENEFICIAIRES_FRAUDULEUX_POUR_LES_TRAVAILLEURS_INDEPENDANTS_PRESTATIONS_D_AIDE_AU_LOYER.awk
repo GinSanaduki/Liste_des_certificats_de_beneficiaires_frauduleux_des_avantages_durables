@@ -39,9 +39,14 @@ BEGIN{
 	} else {
 		print "		\047"$5"\047 AS EMPLACEMENT,";
 	}
-	
-	print "		"$6" AS SOMME_D_ARGENT,";
-	print "		\047"$7"\047 AS APERCU";
+	text = $6 + 0;
+	if(text > 0){
+		print "		"$6" AS SOMME_D_ARGENT,";
+		print "		\047"$7"\047 AS APERCU";
+	} else {
+		print "		1000000 AS SOMME_D_ARGENT,";
+		print "		\047"$6"\047 AS APERCU";
+	}
 	
 	# https://stackoverflow.com/questions/9527851/sqlite-error-too-many-terms-in-compound-select
 	# ios - SQLite error: too many terms in compound SELECT - Stack Overflow
