@@ -49,7 +49,6 @@ function ExecCurl(Args_DownLoadMainPageName_EC,
 		Local_Etags_EC = RetETag();
 		INSERT_RENSEIGNEMENTS_SUR_LE_SITE_Page_d_accueil();
 		if(SELECT_RENSEIGNEMENTS_SUR_LE_SITE_Page_d_accueil(Local_Etags_EC) < 1){
-			print "hogehogehoge"
 			print Args_DownLoadMainPageName_EC
 			ExecCurl_Details(Args_DownLoadMainPageName_EC);
 			# 取得後に更新
